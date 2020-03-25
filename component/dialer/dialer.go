@@ -30,6 +30,9 @@ func DialContext(ctx context.Context, network, address string) (net.Conn, error)
 		if err != nil {
 			return nil, err
 		}
+		if len(host) <= 0 {
+			return nil, errors.New("host is empty")
+		}
 
 		dialer, err := Dialer()
 		if err != nil {
@@ -78,6 +81,9 @@ func dualStackDialContext(ctx context.Context, network, address string) (net.Con
 	host, port, err := net.SplitHostPort(address)
 	if err != nil {
 		return nil, err
+	}
+	if len(host) <= 0 {
+		return nil, errors.New("host is empty")
 	}
 
 	returned := make(chan struct{})
