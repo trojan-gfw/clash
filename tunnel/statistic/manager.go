@@ -19,7 +19,8 @@ func init() {
 		downloadTotal: atomic.NewInt64(0),
 	}
 
-	go DefaultManager.handle()
+    // igniter
+	//go DefaultManager.handle()
 }
 
 type Manager struct {

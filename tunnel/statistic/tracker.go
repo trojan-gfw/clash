@@ -39,7 +39,7 @@ func (tt *tcpTracker) ID() string {
 func (tt *tcpTracker) Read(b []byte) (int, error) {
 	n, err := tt.Conn.Read(b)
 	download := int64(n)
-	tt.manager.PushDownloaded(download)
+	//tt.manager.PushDownloaded(download)
 	tt.DownloadTotal.Add(download)
 	return n, err
 }
@@ -47,7 +47,7 @@ func (tt *tcpTracker) Read(b []byte) (int, error) {
 func (tt *tcpTracker) Write(b []byte) (int, error) {
 	n, err := tt.Conn.Write(b)
 	upload := int64(n)
-	tt.manager.PushUploaded(upload)
+	//tt.manager.PushUploaded(upload)
 	tt.UploadTotal.Add(upload)
 	return n, err
 }
@@ -96,7 +96,7 @@ func (ut *udpTracker) ID() string {
 func (ut *udpTracker) ReadFrom(b []byte) (int, net.Addr, error) {
 	n, addr, err := ut.PacketConn.ReadFrom(b)
 	download := int64(n)
-	ut.manager.PushDownloaded(download)
+	//ut.manager.PushDownloaded(download)
 	ut.DownloadTotal.Add(download)
 	return n, addr, err
 }
@@ -104,7 +104,7 @@ func (ut *udpTracker) ReadFrom(b []byte) (int, net.Addr, error) {
 func (ut *udpTracker) WriteTo(b []byte, addr net.Addr) (int, error) {
 	n, err := ut.PacketConn.WriteTo(b, addr)
 	upload := int64(n)
-	ut.manager.PushUploaded(upload)
+	//ut.manager.PushUploaded(upload)
 	ut.UploadTotal.Add(upload)
 	return n, err
 }
