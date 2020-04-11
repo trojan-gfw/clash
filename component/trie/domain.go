@@ -24,6 +24,10 @@ type DomainTrie struct {
 }
 
 func ValidAndSplitDomain(domain string) ([]string, bool) {
+	if len(domain) <= 0 {
+		return nil, false
+	}
+
 	if domain != "" && domain[len(domain)-1] == '.' {
 		return nil, false
 	}
