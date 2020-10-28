@@ -18,8 +18,8 @@ import (
 )
 
 var (
-	tcpQueue  = make(chan C.ConnContext, 200)
-	udpQueue  = make(chan *inbound.PacketAdapter, 200)
+	tcpQueue  = make(chan C.ConnContext, 65536)
+	udpQueue  = make(chan *inbound.PacketAdapter, 65536)
 	natTable  = nat.New()
 	rules     []C.Rule
 	proxies   = make(map[string]C.Proxy)
